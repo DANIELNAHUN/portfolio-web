@@ -4,22 +4,21 @@ import HomeView from './views/HomeView.vue'
 import AboutView from './views/AboutView.vue'
 import ProjectsView from './views/ProjectsView.vue'
 import ContactView from './views/ContactView.vue'
+import FooterApp from './components/system/FooterApp.vue'
 </script>
 
 <template>
   <div class="app">
     <HeaderApp/>
-    <div>
+    <div class="body-container">
       <router-view/>
     </div>
   </div>
+  <FooterApp/>
 </template>
 
 <style>
-.container{
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+.body-container{
+  margin-top: 4rem;
 }
 </style>
