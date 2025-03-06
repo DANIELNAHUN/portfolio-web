@@ -5,6 +5,17 @@ import AboutView from './views/AboutView.vue'
 import ProjectsView from './views/ProjectsView.vue'
 import ContactView from './views/ContactView.vue'
 import FooterApp from './components/system/FooterApp.vue'
+
+import { onMounted } from 'vue'
+import { useStore } from 'vuex'
+
+const store = useStore();
+
+onMounted(() => {
+  // store.dispatch('getMe');
+  // store.dispatch('getTitles');
+  store.dispatch('getSkills');
+})
 </script>
 
 <template>

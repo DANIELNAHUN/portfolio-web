@@ -23,7 +23,7 @@ const store = createStore({
         me: {},
         projects: [],
         technologies: [],
-        titles: [],
+        titles: [ "Web Fullstack Developer", "ETL Engineer", "RPA Developer" ],
         techbyprojects:[]
     },
     getters:{
@@ -35,8 +35,10 @@ const store = createStore({
         },
         setTitles(state, titles){
             state.titles = titles;
-        }
-
+        },
+        setSkills(state, skills){
+            state.technologies = skills;
+        },
     },
     actions:{
         async getMe({commit}){
@@ -53,14 +55,25 @@ const store = createStore({
             try{
                 const res = await apiClient.get(api_+'/titles?select=title');
                 if(res.status === 200){
-                    // por cada item en mi res.data sacar lo que este dentro de title, y pasar todo a una lista
                     const titles = res.data.map(item => item.title);
                     commit('setTitles', titles);
                 }
             } catch(error){
                 console.log(error)
             }
-        }
+        },
+        async getSkills({commit}){
+            try{
+                const res = await apiClient.get(api_+'/technologies?select=technology,tag');
+                if(res.status === 200){
+                    commit('setSkills', res.data);
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+        },
+
     },
     modules:{
 
