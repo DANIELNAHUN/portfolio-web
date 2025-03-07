@@ -39,6 +39,12 @@ const store = createStore({
         setSkills(state, skills){
             state.technologies = skills;
         },
+        setProjects(state, projects){
+            state.projects = projects;
+        },
+        setTechByProjects(state, techbyprojects){
+            state.techbyprojects = techbyprojects;
+        }
     },
     actions:{
         async getMe({commit}){
@@ -73,7 +79,36 @@ const store = createStore({
                 console.log(error)
             }
         },
-
+        async getProjects({commit}){
+            try{
+                const res = await apiClient.get(api_+'/projects?select=*');
+                if(res.status === 200){
+                    const projects = res.data;
+                    projects.forEach(async element => {
+                        const res2 = await apiClient.get(api_+'/techsbyproject?select=fk_tech&fk_project=eq.'+element.id);
+                        const techs = res2.data.map(item => item.fk_tech);
+                        if(res2.status === 200){
+                            element.tags = techs;
+                        }
+                    });
+                    commit('setProjects', projects);
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+        },
+        async getTechByProjects({commit}){
+            try{
+                const res = await apiClient.get(api_+'/techsbyproject?select=*');
+                if(res.status === 200){
+                    commit('setTechByProjects', res.data);
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
     },
     modules:{
 

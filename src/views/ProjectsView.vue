@@ -1,4 +1,10 @@
 <script setup>
+import { ref, onMounted, computed  } from "vue";
+import { useStore } from 'vuex';
+
+const store = useStore()
+
+const featuredProjects = computed(()=> store.state.projects)
 </script>
 
 <template>
