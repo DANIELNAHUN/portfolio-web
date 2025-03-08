@@ -14,7 +14,7 @@ const store = useStore();
 onMounted(() => {
   // store.dispatch('getMe');
   // store.dispatch('getTitles');
-  // store.dispatch('getSkills');
+  store.dispatch('getSkills');
   store.dispatch('getProjects');
 })
 </script>

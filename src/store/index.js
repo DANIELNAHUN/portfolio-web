@@ -1,3 +1,4 @@
+import { list } from "@primeuix/themes/aura/autocomplete";
 import axios from "axios";
 import { createStore } from 'vuex';
 
@@ -27,7 +28,9 @@ const store = createStore({
         techbyprojects:[]
     },
     getters:{
-
+        getlistnametecnhologiesbylistids: (state) => (ids) => {
+            return state.technologies.filter(tech => ids.includes(tech.tag)).map(tech => tech.technology)
+        }
     },
     mutations:{
         setPersonalInfo(state, me){
@@ -40,11 +43,16 @@ const store = createStore({
             state.technologies = skills;
         },
         setProjects(state, projects){
+            projects.forEach( projects => {
+                let listtechnologies = projects.tags;
+                console.log(listtechnologies);
+
+                let listtagsname = state.technologies.filter(tech => listtechnologies.includes(tech.tag)).map(tech => tech.technology);
+                console.log(state.technologies.filter(tech => console.log(tech)));
+                projects.tags = listtagsname;
+            });
             state.projects = projects;
         },
-        setTechByProjects(state, techbyprojects){
-            state.techbyprojects = techbyprojects;
-        }
     },
     actions:{
         async getMe({commit}){
@@ -84,13 +92,13 @@ const store = createStore({
                 const res = await apiClient.get(api_+'/projects?select=*');
                 if(res.status === 200){
                     const projects = res.data;
-                    projects.forEach(async element => {
+                    for (const element of projects) {
                         const res2 = await apiClient.get(api_+'/techsbyproject?select=fk_tech&fk_project=eq.'+element.id);
                         const techs = res2.data.map(item => item.fk_tech);
                         if(res2.status === 200){
                             element.tags = techs;
                         }
-                    });
+                    };
                     commit('setProjects', projects);
                 }
             }
@@ -98,17 +106,6 @@ const store = createStore({
                 console.log(error)
             }
         },
-        async getTechByProjects({commit}){
-            try{
-                const res = await apiClient.get(api_+'/techsbyproject?select=*');
-                if(res.status === 200){
-                    commit('setTechByProjects', res.data);
-                }
-            }
-            catch(error){
-                console.log(error)
-            }
-        }
     },
     modules:{
 

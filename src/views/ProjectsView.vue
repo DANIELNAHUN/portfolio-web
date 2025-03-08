@@ -11,6 +11,7 @@ const featuredProjects = computed(()=> store.state.projects)
   <section id="projects" class="projects">
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
+      <p>{{ featuredProjects }}</p>
       <div class="projects-grid">
         <div
           class="project-card"
