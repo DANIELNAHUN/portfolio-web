@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -9,6 +9,7 @@ const skills = computed(() => store.state.technologies);
 const skillsFront = ref([])
 const skillsBack = ref([])
 const skillsData = ref([])
+const ageMe = ref(0)
 
 const splitSkills = () => {
   skills.value.forEach(skill => {
@@ -22,9 +23,25 @@ const splitSkills = () => {
   });
 };
 
-onMounted(() => {
-  splitSkills();
+function calculateAge(date) {
+    let today = new Date();
+    let datB = new Date(date);
+    let age = today.getFullYear() - datB.getFullYear();
+    let month = today.getMonth() - datB.getMonth();
+
+    if (month < 0 || (month === 0 && today.getDate() < datB.getDate())) {
+      age--;
+    }
+    ageMe.value = age
+}
+
+watch([skills, me], ([newskills, newme]) => {
+  if(newskills.length && newme){
+    splitSkills();
+    calculateAge(me.value.birthdate)
+  }
 });
+
 
 </script>
 
@@ -35,7 +52,7 @@ onMounted(() => {
       <div class="about-content">
         <div class="about-text">
           <p class="intro">
-            Hello! I'm <strong>{{ me.fullname }}</strong>, a 28-year-old developer from
+            Hello! I'm <strong>{{ me.fullname }}</strong>, a {{ageMe}}-year-old developer from
             Perú with a passion for creating elegant solutions to complex
             problems.
           </p>
@@ -45,7 +62,7 @@ onMounted(() => {
             my skills in both frontend and backend development.
           </p>
           <p>
-            My journey in technology began when I was 15, building simple
+            My journey in technology began when I was 20, building simple
             websites for friends and family. Today, I specialize in creating
             robust web applications using Vue.js and Python, developing ETL
             processes for data integration, and implementing RPA solutions to

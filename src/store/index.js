@@ -25,7 +25,8 @@ const store = createStore({
         projects: [],
         technologies: [],
         titles: [ "Web Fullstack Developer", "ETL Engineer", "RPA Developer" ],
-        techbyprojects:[]
+        techbyprojects:[],
+        topics: []
     },
     getters:{
         getlistnametecnhologiesbylistids: (state) => (ids) => {
@@ -43,15 +44,10 @@ const store = createStore({
             state.technologies = skills;
         },
         setProjects(state, projects){
-            projects.forEach( projects => {
-                let listtechnologies = projects.tags;
-                console.log(listtechnologies);
-
-                let listtagsname = state.technologies.filter(tech => listtechnologies.includes(tech.tag)).map(tech => tech.technology);
-                console.log(state.technologies.filter(tech => console.log(tech)));
-                projects.tags = listtagsname;
-            });
             state.projects = projects;
+        },
+        setTopics(state, topics){
+            state.topics = topics;
         },
     },
     actions:{
@@ -78,7 +74,7 @@ const store = createStore({
         },
         async getSkills({commit}){
             try{
-                const res = await apiClient.get(api_+'/technologies?select=technology,tag');
+                const res = await apiClient.get(api_+'/technologies?select=id,technology,tag');
                 if(res.status === 200){
                     commit('setSkills', res.data);
                 }
@@ -106,6 +102,18 @@ const store = createStore({
                 console.log(error)
             }
         },
+        async getTopics({commit}){
+            try{
+                const res = await apiClient.get(api_+'/topics?select=topic');
+                if(res.status === 200){
+                    const topics = res.data.map(item => item.topic);
+                    commit('setTopics', topics);
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
     },
     modules:{
 
