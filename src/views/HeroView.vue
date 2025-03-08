@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed  } from "vue";
 import { useStore } from 'vuex';
+import Button from 'primevue/button';
 
 const store = useStore()
 
@@ -37,8 +38,8 @@ onMounted(()=>{
             </h2>
           </div>
           <div class="cta-buttons">
-            <a href="#projects" class="btn primary">View Projects</a>
-            <a href="#contact" class="btn secondary">Contact Me</a>
+            <Button label="View Projects" class="btn primary" href="#projects"/>
+            <Button label="Contact Me" class="btn secondary" href="#contact"/>
           </div>
         </div>
         <div class="hero-image">

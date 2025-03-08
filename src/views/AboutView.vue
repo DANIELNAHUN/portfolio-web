@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { useStore } from 'vuex';
+import Tag from 'primevue/tag';
 
 const store = useStore();
 
@@ -79,31 +80,19 @@ watch([skills, me], ([newskills, newme]) => {
           <div class="skill-category" v-if="skillsFront.length > 0">
             <h3>Frontend</h3>
             <div class="skill-tags">
-              <span v-for="(skill, index) in skillsFront" :key="index">{{ skill }}</span>
-              <!-- <span>Vue.js</span>
-              <span>JavaScript</span>
-              <span>HTML/CSS</span>
-              <span>Tailwind</span> -->
+              <Tag v-for="(skill, index) in skillsFront" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
           <div class="skill-category" v-if="skillsBack.length > 0">
             <h3>Backend</h3>
             <div class="skill-tags">
-              <span v-for="(skill, index) in skillsBack" :key="index">{{ skill }}</span>
-              <!-- <span>Python</span>
-              <span>Flask</span>
-              <span>Django</span>
-              <span>Node.js</span> -->
+              <Tag v-for="(skill, index) in skillsBack" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
           <div class="skill-category" v-if="skillsData.length > 0">
             <h3>Data & Automation</h3>
             <div class="skill-tags">
-              <span v-for="(skill, index) in skillsData" :key="index">{{ skill }}</span>
-              <!-- <span>ETL</span>
-              <span>RPA</span>
-              <span>SQL</span>
-              <span>Power BI</span> -->
+              <Tag v-for="(skill, index) in skillsData" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
         </div>
