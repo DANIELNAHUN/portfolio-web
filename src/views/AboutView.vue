@@ -80,19 +80,19 @@ watch([skills, me], ([newskills, newme]) => {
           <div class="skill-category" v-if="skillsFront.length > 0">
             <h3>Frontend</h3>
             <div class="skill-tags">
-              <Tag v-for="(skill, index) in skillsFront" :key="index" :value="skill" rounded></Tag>
+              <Tag unstyled v-for="(skill, index) in skillsFront" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
           <div class="skill-category" v-if="skillsBack.length > 0">
             <h3>Backend</h3>
             <div class="skill-tags">
-              <Tag v-for="(skill, index) in skillsBack" :key="index" :value="skill" rounded></Tag>
+              <Tag unstyled v-for="(skill, index) in skillsBack" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
           <div class="skill-category" v-if="skillsData.length > 0">
             <h3>Data & Automation</h3>
             <div class="skill-tags">
-              <Tag v-for="(skill, index) in skillsData" :key="index" :value="skill" rounded></Tag>
+              <Tag unstyled v-for="(skill, index) in skillsData" :key="index" :value="skill" rounded></Tag>
             </div>
           </div>
         </div>

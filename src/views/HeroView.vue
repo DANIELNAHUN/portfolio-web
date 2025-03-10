@@ -38,8 +38,8 @@ onMounted(()=>{
             </h2>
           </div>
           <div class="cta-buttons">
-            <Button label="View Projects" class="btn primary" href="#projects"/>
-            <Button label="Contact Me" class="btn secondary" href="#contact"/>
+            <Button unstyled label="View Projects" class="btn primary" href="#projects"/>
+            <Button unstyled label="Contact Me" class="btn secondary" href="#contact"/>
           </div>
         </div>
         <div class="hero-image">
