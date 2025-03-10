@@ -8,7 +8,9 @@ import PrimeVue from 'primevue/config'
 
 const app = createApp(App);
 
-app.use(PrimeVue,{ unstyled:true });
+app.use(PrimeVue,
+    { unstyled:true }
+);
 app.use(router);
 app.use(store);
 

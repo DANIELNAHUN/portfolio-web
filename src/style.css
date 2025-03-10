@@ -422,7 +422,7 @@ a:hover {
   cursor: pointer;
 }
 
-.topic-chip span {
+.topic-chip span, .topic-chip label {
   display: inline-block;
   padding: 0.6rem 1.2rem;
   background-color: #edf2f7;
