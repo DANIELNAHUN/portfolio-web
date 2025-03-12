@@ -1,9 +1,9 @@
-import { list } from "@primeuix/themes/aura/autocomplete";
 import axios from "axios";
 import { createStore } from 'vuex';
 
 const api_ = import.meta.env.VITE_APP_API
 const token_ = import.meta.env.VITE_APP_TOKEN
+const api_email = import.meta.env.VITE_APP_EMAIL
 
 const apiClient = axios.create({
     baseURL: api_,
@@ -113,6 +113,18 @@ const store = createStore({
             catch(error){
                 console.log(error)
             }
+        },
+        async sendEmails({commit}, params){
+            try{
+                const res = await axios.post(api_email,params);
+                if(res.status === 200){
+                    return res.status;
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+    
         }
     },
     modules:{

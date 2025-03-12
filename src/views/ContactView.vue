@@ -27,6 +27,19 @@ const initialValues = ref({
   message: ''
 });
 
+const sendEmail =  async () =>{
+  const params = {
+    subject: 'Portafolio - Contacto',
+    message: `<div><h1>Interesado en: ${selectedTopics.value}</h1><h3>Contacto: ${contactEmail.value}</h3><p>${contactMessage.value}</p></div>`
+  }
+  await store.dispatch('sendEmails', params).then((res) =>{
+    if (res === 200){
+      return true
+    } else {
+      return false
+    }
+  })
+}
 const resolver = valibotResolver(
   v.object({
     email: v.pipe(
@@ -49,20 +62,25 @@ const resolver = valibotResolver(
 const submitContact = (form) => {
   const {valid, reset} = form;
   if (valid){
-    // Here I would typically send this data to your backend
     if (selectedTopics.value.length > 0){
-      toast.add({ severity: 'success', summary: 'Thank you for your message! I will get back to you soon.', life: 3000 });
-      selectedTopics.value = [];
-      contactEmail.value = '';
-      contactMessage.value = '';
-      reset();
+      const res = sendEmail();
+      if (res){
+        toast.add({ severity: 'success', summary: 'Thank you for your message! I will get back to you soon.', life: 3000 });
+        selectedTopics.value = [];
+        contactEmail.value = '';
+        contactMessage.value = '';
+        reset();
+      }
+      else{
+        toast.add({ severity: 'error', summary: 'There was an error sending the email', life: 3000, closable: false});
+      }
     }
     else{
       toast.add({ severity: 'error', summary: 'Please select at least one topic', life: 3000, closable: false});
     }
   }
   else{
-    console.log('Form is invalid');
+    toast.add({ severity: 'error', summary: 'Form is invalid', life: 3000, closable: false});
   }
 };
 </script>
