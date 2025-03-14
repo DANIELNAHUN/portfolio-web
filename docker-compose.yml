@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  front-portfolio:
+    build: .
+    container_name: front-portfolio
+    ports:
+      - 8081:80
