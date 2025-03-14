@@ -44,8 +44,7 @@ onMounted(()=>{
         </div>
         <div class="hero-image">
           <div class="image-container">
-            <!-- Replace with your actual image -->
-            <img src="../assets/vue.svg" alt="Profile Photo" />
+            <img :src="me.photo" :alt="me.shortname" />
           </div>
         </div>
       </div>

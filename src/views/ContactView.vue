@@ -12,11 +12,11 @@ import { useToast } from 'primevue/usetoast';
 import { Form } from '@primevue/forms';
 import { valibotResolver } from '@primevue/forms/resolvers/valibot';
 import * as v from 'valibot';
-import { useRecaptcha } from 'vue-recaptcha-v3';
+import { useReCaptcha  } from 'vue-recaptcha-v3';
 
 const store = useStore();
 const toast = useToast();
-const { executeRecaptcha } = useRecaptcha();
+const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
 
 const contactTopics = computed(() => store.state.topics);
 const selectedTopics = ref([]);
@@ -34,27 +34,22 @@ const sendEmail =  async () =>{
     subject: 'Portafolio - Contacto',
     message: `<div><h1>Interesado en: ${selectedTopics.value}</h1><h3>Contacto: ${contactEmail.value}</h3><p>${contactMessage.value}</p></div>`
   }
-  try {
-    const token = await executeRecaptcha('contact')
-    console.log('Token de reCAPTCHA',token)
-    await store.dispatch('verifyRecaptcha', token).then(async (res) =>{
-      if (res === 200){
-        await store.dispatch('sendEmails', params).then((res) =>{
-          if (res === 200){
-            return true
-          } else {
-            return false
-          }
-        })
-        return true
-      } else {
-        return false
-      }
-    })
-  } catch (error) {
-    console.log(error)
-    return false
-  }
+  await recaptchaLoaded()
+  const token = await executeRecaptcha('contact_form')
+  await store.dispatch('verifyRecaptcha', token).then(async (res) =>{
+    if (res === 200){
+      await store.dispatch('sendEmails', params).then((res) =>{
+        if (res === 200){
+          return true
+        } else {
+          return false
+        }
+      })
+      return true
+    } else {
+      return false
+    }
+  })
 }
 const resolver = valibotResolver(
   v.object({

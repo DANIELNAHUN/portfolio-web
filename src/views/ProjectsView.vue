@@ -36,8 +36,7 @@ watch([featuredProjects, techs],([newFeaturedProjects, newTechs]) =>{
           :key="index"
         >
           <div class="project-image">
-            <img src="../assets/vue.svg" :alt="project.title" />
-            <!-- <img :src="project.image" :alt="project.title" /> -->
+            <img :src="project.image" :alt="project.title" />
           </div>
           <div class="project-content">
             <h3>{{ project.title }}</h3>

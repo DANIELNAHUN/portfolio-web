@@ -117,8 +117,8 @@ const store = createStore({
         async sendEmails({commit}, params){
             try{
                 const res = await axios.post(api_email+'/send-email',params);
-                if(res.status === 200){
-                    return res.status;
+                if(res.data.success){
+                    return 200;
                 }
             }
             catch(error){
