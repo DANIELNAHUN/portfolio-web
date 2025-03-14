@@ -116,7 +116,18 @@ const store = createStore({
         },
         async sendEmails({commit}, params){
             try{
-                const res = await axios.post(api_email,params);
+                const res = await axios.post(api_email+'/send-email',params);
+                if(res.status === 200){
+                    return res.status;
+                }
+            }
+            catch(error){
+                console.log(error)
+            }    
+        },
+        async verifyRecaptcha({commit}, token){
+            try{
+                const res = await axios.post(api_email+'/verify-recaptcha', {token: token});
                 if(res.status === 200){
                     return res.status;
                 }
@@ -124,7 +135,6 @@ const store = createStore({
             catch(error){
                 console.log(error)
             }
-    
         }
     },
     modules:{
