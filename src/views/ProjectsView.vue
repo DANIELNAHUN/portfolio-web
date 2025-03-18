@@ -1,6 +1,7 @@
 <script setup>
-import { ref, watch, computed  } from "vue";
+import { ref, watch, computed, onMounted  } from "vue";
 import { useStore } from 'vuex';
+import ProjectList from "../components/projects/ProjectList.vue";
 
 const store = useStore()
 
@@ -20,7 +21,17 @@ const updateNameTags = () => featuredProjects.value.forEach( project => {
 
 watch([featuredProjects, techs],([newFeaturedProjects, newTechs]) =>{
   if (newFeaturedProjects.length && newTechs.length) {
+    projects.value = [];
     updateNameTags();
+  }
+});
+
+onMounted(() => {
+  if (featuredProjects.value.length<1) {
+    store.dispatch('getProjects');
+  }
+  if (techs.value.length) {
+    store.dispatch('getSkills');
   }
 });
 </script>
@@ -29,32 +40,9 @@ watch([featuredProjects, techs],([newFeaturedProjects, newTechs]) =>{
   <section id="projects" class="projects">
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-        <div
-          class="project-card"
-          v-for="(project, index) in projects"
-          :key="index"
-        >
-          <div class="project-image">
-            <img :src="project.image" :alt="project.title" />
-          </div>
-          <div class="project-content">
-            <h3>{{ project.title }}</h3>
-            <p class="project-category">{{ project.category }}</p>
-            <p class="project-description">{{ project.description }}</p>
-            <div class="project-tags">
-              <span v-for="(tag, tagIndex) in project.tags" :key="tagIndex">{{
-                tag
-              }}</span>
-            </div>
-            <a :href="project.link" class="project-link">View Project</a>
-          </div>
-        </div>
-      </div>
+      <ProjectList paginator="true" layout="list"/>
       <div class="view-all">
-        <router-link to="/projects" class="btn primary"
-          >View All Projects</router-link
-        >
+        <router-link to="/projects" class="btn primary">View All Projects</router-link>
       </div>
     </div>
   </section>

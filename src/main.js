@@ -17,7 +17,7 @@ app.use(PrimeVue,
         preset: Aura,
         options: {
             prefix: 'p',
-            ddarkModeSelector: false || 'none',
+            darkModeSelector: false || 'none',
             cssLayer: false
         }
         // unstyled:true
