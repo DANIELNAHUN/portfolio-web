@@ -10,7 +10,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Welcome to the portfolio of Daniel Calcina, web developer. Here you will find information about me, my projects and how to contact me.',
+      content: 'Daniel Calcina. Portfolio, Projects and Contact.',
     },
     {
       property: 'og:title',
@@ -18,7 +18,7 @@ useHead({
     },
     {
       property: 'og:description',
-      content: 'Welcome to the portfolio of Daniel Calcina, web developer. Here you will find information about me, my projects and how to contact me.',
+      content: 'Daniel Calcina. Portfolio, Projects and Contact.',
     },
     {
       property: 'og:url',
@@ -28,6 +28,11 @@ useHead({
     //   property: 'og:image',
     //   content: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
     // },
+    {
+      name: 'keywords',
+      content: 'Daniel Calcina, Peru, Ilo, Arequipa, Tacna, Lima, Web Developer, RPA, Developer, ETL, Python, VueJS, Vue, Wordpress, FastaAPI, RestAPI, Docker, HTML, CSS, JavaScript, Azure, Git, Supabase',
+    }
+
   ],
 });
 </script>
