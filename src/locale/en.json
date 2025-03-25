@@ -1,0 +1,44 @@
+{
+    "menu": {
+        "home": "Home",
+        "about": "About Me",
+        "projects": "Projects",
+        "contact": "Contact Me"
+    },
+    "titles": {
+        "about": "About Me",
+        "projects": "Featured Projects",
+        "contact": "Get In Touch"
+    },
+    "buttons": {
+        "view": "View Project",
+        "viewAll": "View All Projects",
+        "contact": "Contact Me",
+        "download": "Download CV",
+        "send": "Send Message"
+    },
+    "about":{
+        "iam": "I'm a",
+        "description": {
+            "line1": "Hello! I'm <strong>{{ me.fullname }}</strong>, a {{ageMe}}-year-old developer from Perú with a passion for creating elegant solutions to complex problems.",
+            "line2": "ith a Bachelor's degree in Computer Science from the National University of Moquegua, I've spent the last 5 years honing my skills in both frontend and backend development.",
+            "line3": "My journey in technology began when I was 20, building simple websites for friends and family. Today, I specialize in creating robust web applications using Vue.js and Python, developing ETL processes for data integration, and implementing RPA solutions to automate business workflows.",
+            "line4": "What drives me is the constant evolution of technology and the endless opportunities to learn and create. I believe in clean code, user-centered design, and the power of automation to transform businesses."
+        }
+    },
+    "contact":{
+        "intro": "Interested in working together? Select a topic you're interested in and let's discuss how I can help.",
+        "interested": "I'm interested in",
+        "email": {
+            "label": "Your Email",
+            "placeholder": "your.email@example.com"
+        },
+        "tellme": {
+            "label": "Tell me about your project",
+            "placeholder": "Describe your project or inquiry..."
+        }
+    },
+    "footer": {
+        "rights": "© {{ new Date().getFullYear() }} Daniel Nahun. All rights reserved."
+    }
+}

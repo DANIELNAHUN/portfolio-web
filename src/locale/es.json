@@ -1,0 +1,44 @@
+{
+    "menu": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contáctame"
+    },
+    "titles": {
+        "about": "Sobre mí",
+        "projects": "Proyectos Destacados",
+        "contact": "Ponte en Contacto"
+    },
+    "buttons": {
+        "view": "Ver Proyecto",
+        "viewAll": "Ver Todos los Proyectos",
+        "contact": "Contáctame",
+        "download": "Descargar CV",
+        "send": "Enviar Mensaje"
+    },
+    "about":{
+        "iam": "Soy un",
+        "description": {
+            "line1": "¡Hola! Soy <strong>{{ me.fullname }}</strong>, un desarrollador de {{ageMe}} años de Perú con una pasión por crear soluciones elegantes a problemas complejos.",
+            "line2": "Con una licenciatura en Ciencias de la Computación de la Universidad Nacional de Moquegua, he pasado los últimos 5 años perfeccionando mis habilidades tanto en el desarrollo frontend como en el backend.",
+            "line3": "Mi viaje en la tecnología comenzó cuando tenía 20 años, construyendo sitios web simples para amigos y familiares. Hoy, me especializo en crear aplicaciones web robustas utilizando Vue.js y Python, desarrollando procesos ETL para la integración de datos e implementando soluciones RPA para automatizar flujos de trabajo empresariales.",
+            "line4": "Lo que me impulsa es la constante evolución de la tecnología y las infinitas oportunidades de aprender y crear. Creo en el código limpio, el diseño centrado en el usuario y el poder de la automatización para transformar los negocios."
+        }
+    },
+    "contact":{
+        "intro": "¿Interesado en trabajar juntos? Selecciona un tema que te interese y discutamos cómo puedo ayudarte.",
+        "interested": "Estoy interesado en",
+        "email": {
+            "label": "Tu Correo Electrónico",
+            "placeholder": "tu.email@example.com"
+            },
+        "tellme": {
+            "label": "Cuéntame sobre tu proyecto",
+            "placeholder": "Describe tu proyecto o consulta..."
+        }
+    },
+    "footer": {
+        "rights": "© {{ new Date().getFullYear() }} Daniel Nahun. Todos los derechos reservados."
+    }
+}
