@@ -6,7 +6,7 @@ import ContactView from "./ContactView.vue";
 import { useHead } from '@vueuse/head';
 
 useHead({
-  title: "Home - Daniel Calcina's Web Portfolio",
+  title: "Home - Daniel Calcina",
   meta: [
     {
       name: 'description',
@@ -32,7 +32,6 @@ useHead({
       name: 'keywords',
       content: 'Daniel Calcina, Peru, Ilo, Arequipa, Tacna, Lima, Web Developer, RPA, Developer, ETL, Python, VueJS, Vue, Wordpress, FastaAPI, RestAPI, Docker, HTML, CSS, JavaScript, Azure, Git, Supabase',
     }
-
   ],
 });
 </script>
