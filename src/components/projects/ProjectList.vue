@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import DataView from 'primevue/dataview';
 import SelectButton from 'primevue/selectbutton';
@@ -12,20 +12,8 @@ const props = defineProps({
     paginator: { Boolean, default: false },
     layout: { String, default: 'grid' }
 })
-const featuredProjects = computed(() => store.state.projects)
+const projects = computed(() => store.state.projects)
 const techs = computed(() => store.state.technologies)
-const projects = ref([])
-const updateNameTags = () => {
-    projects.value = [];
-    featuredProjects.value.forEach(project => {
-    let listtechnologies = project.tags;
-    let techsObject = techs.value;
-    let techNames = listtechnologies.map(tech => {
-        let techName = techsObject.find(techObject => techObject.id === tech);
-        return techName.technology;
-    });
-    projects.value.push({ ...project, tags: techNames });
-});}
 
 const layout = ref(props.layout);
 const options = ref(['list', 'grid']);
@@ -44,20 +32,13 @@ const getCategory = (project) => {
     }
 }
 
-watch([featuredProjects, techs], ([newFeaturedProjects, newTechs]) => {
-    if (newFeaturedProjects.length || newTechs.length) {
-        updateNameTags();
-    }
-});
-
 onMounted(() => {
-    if (featuredProjects.value.length < 1) {
+    if (projects.value.length < 1) {
         store.dispatch('getProjects');
     }
     if (techs.value.length < 1) {
         store.dispatch('getSkills');
     }
-    updateNameTags();
 });
 
 </script>
@@ -95,7 +76,7 @@ onMounted(() => {
                                 <div class="description">
                                     <span>{{ item.description }}</span>
                                     <div class="project-tags">
-                                        <span v-for="(tag, tagIndex) in item.tags" :key="tagIndex">{{ tag }}</span>
+                                        <span v-for="tech in item.technologies" :key="tech.id">{{ tech.technology }}</span>
                                     </div>
                                 </div>
                                 <div class="action">
@@ -130,7 +111,7 @@ onMounted(() => {
                                     <span>{{ item.description }}</span>
                                 </div>
                                 <div class="project-tags">
-                                    <span v-for="(tag, tagIndex) in item.tags" :key="tagIndex">{{ tag }}</span>
+                                    <span v-for="tech in item.technologies" :key="tech.id">{{ tech.technology }}</span>
                                 </div>
                             </div>
                         </div>
