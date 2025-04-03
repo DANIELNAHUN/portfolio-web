@@ -113,8 +113,8 @@ const submitContact = (form) => {
             <h3>I'm interested in:</h3>
             <div class="topic-chips">
               <label v-for="(topic, index) in contactTopics" :key="index" class="topic-chip">
-                <input name="topics" type="checkbox" v-model="selectedTopics" :value="topic" />
-                <span>{{ topic }}</span>
+                <input name="topics" type="checkbox" v-model="selectedTopics" :value="topic.topic" />
+                <span>{{ topic.topic }}</span>
               </label>
             </div>
             <Message  v-if="$form.topics?.invalid" size="small" variant="simple" severity="warn">{{ $form.topics.error.message }}</Message>

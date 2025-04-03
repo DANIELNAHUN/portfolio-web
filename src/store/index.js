@@ -116,9 +116,10 @@ const store = createStore({
         },
         async getTopics({commit}){
             try{
-                const res = await apiClientSupabase.get(api_supabase+'/topics?select=topic');
+                const res = await apiClientSupabase.get(api_supabase+'/topics?select=id,topic');
                 if(res.status === 200){
-                    const topics = res.data.map(item => item.topic);
+                    // const topics = res.data.map(item => item.topic);
+                    const topics = res.data;
                     commit('setTopics', topics);
                 }
             }

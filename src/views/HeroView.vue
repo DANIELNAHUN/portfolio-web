@@ -44,7 +44,7 @@ onMounted(()=>{
         </div>
         <div class="hero-image">
           <div class="image-container">
-            <img :src="me.photo" :alt="me.shortname" />
+            <img src="/src/assets/profile.webp" :alt="me.shortname" />
           </div>
         </div>
       </div>

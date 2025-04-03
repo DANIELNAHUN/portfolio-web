@@ -24,7 +24,7 @@ onMounted(() => {
       <router-view/>
     </div>
   </div>
-  <!-- <FooterApp/> -->
+  <FooterApp/>
 </template>
 
 <style>

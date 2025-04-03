@@ -66,6 +66,7 @@ watch([skills, me], ([newskills, newme]) => {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
     color: white;
+    align-items: center;
 
     h1 {
         font-size: 1.5rem;

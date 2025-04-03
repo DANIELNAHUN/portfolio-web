@@ -4,6 +4,7 @@ import AboutMeComponent from '../components/me/AboutMeComponent.vue';
 import LanguagesComponent from '../components/projects/LanguagesComponent.vue';
 import ContactMeComponent from '../components/me/ContactMeComponent.vue';
 import SocialLinksComponent from '../components/me/SocialLinksComponent.vue';
+import ProjectsComponent from '../components/projects/ProjectsComponent.vue';
 </script>
 
 <template>
@@ -23,7 +24,9 @@ import SocialLinksComponent from '../components/me/SocialLinksComponent.vue';
         <div class="item item-4">
             <SocialLinksComponent />
         </div>
-        <div class="item item-5">5</div>
+        <div class="item item-5">
+            <ProjectsComponent />
+        </div>
     </div>
 </template>
 
@@ -39,7 +42,7 @@ import SocialLinksComponent from '../components/me/SocialLinksComponent.vue';
 
 .item {
     background-color: rgb(56, 56, 35);
-
+    align-content: center;
     color: #fff;
     border-radius: 5px;
     padding: 20px;

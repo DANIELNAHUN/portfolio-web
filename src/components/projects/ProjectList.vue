@@ -13,7 +13,6 @@ const props = defineProps({
     layout: { String, default: 'grid' }
 })
 const projects = computed(() => store.state.projects)
-const techs = computed(() => store.state.technologies)
 
 const layout = ref(props.layout);
 const options = ref(['list', 'grid']);
@@ -35,9 +34,6 @@ const getCategory = (project) => {
 onMounted(() => {
     if (projects.value.length < 1) {
         store.dispatch('getProjects');
-    }
-    if (techs.value.length < 1) {
-        store.dispatch('getSkills');
     }
 });
 
