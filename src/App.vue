@@ -13,6 +13,7 @@ onMounted(() => {
   store.dispatch('getSkills');
   store.dispatch('getProjects');
   store.dispatch('getTopics');
+  store.dispatch('getLanguages');
 })
 </script>
 
@@ -23,11 +24,14 @@ onMounted(() => {
       <router-view/>
     </div>
   </div>
-  <FooterApp/>
+  <!-- <FooterApp/> -->
 </template>
 
 <style>
 .body-container{
   margin-top: 4rem;
 }
+ /* .app{
+  background-color: black;
+ } */
 </style>

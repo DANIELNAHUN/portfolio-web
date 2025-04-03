@@ -26,12 +26,10 @@ const store = createStore({
         technologies: [],
         titles: [ "Web Fullstack Developer", "ETL Engineer", "RPA Developer" ],
         techbyprojects:[],
-        topics: []
+        topics: [],
+        languages: [],
     },
     getters:{
-        getlistnametecnhologiesbylistids: (state) => (ids) => {
-            return state.technologies.filter(tech => ids.includes(tech.tag)).map(tech => tech.technology)
-        }
     },
     mutations:{
         setPersonalInfo(state, me){
@@ -48,6 +46,9 @@ const store = createStore({
         },
         setTopics(state, topics){
             state.topics = topics;
+        },
+        setLanguages(state, languages){
+            state.languages = languages;
         },
     },
     actions:{
@@ -85,7 +86,7 @@ const store = createStore({
         },
         async getProjects({commit}){
             try{
-                const res = await apiClientSupabase.get(api_local+'/projects/projects');
+                const res = await axios.get(api_local+'/projects/projects');
                 if(res.status === 200){
                     commit('setProjects', res.data);
                 }
@@ -94,7 +95,7 @@ const store = createStore({
                 console.log(error)
             }
         },
-        async getProjectss({commit}){
+        async getProjectsSupabase({commit}){
             try{
                 const res = await apiClientSupabase.get(api_supabase+'/projects?select=*');
                 if(res.status === 200){
@@ -119,6 +120,18 @@ const store = createStore({
                 if(res.status === 200){
                     const topics = res.data.map(item => item.topic);
                     commit('setTopics', topics);
+                }
+            }
+            catch(error){
+                console.log(error)
+            }
+        },
+        async getLanguages({commit}){
+            try{
+                const res = await axios.get(api_local+'/projects/languages');
+                if(res.status === 200){
+                    const languages = res.data.map(item => item.language);
+                    commit('setLanguages', languages);
                 }
             }
             catch(error){
