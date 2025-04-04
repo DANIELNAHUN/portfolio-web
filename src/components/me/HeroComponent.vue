@@ -40,7 +40,7 @@ onMounted(()=>{
     width: 100%;
     height: auto;
     background-color: transparent;
-    color: white;
+    color: #EE6D32;
     box-shadow: none;
 
     img{
@@ -50,11 +50,24 @@ onMounted(()=>{
     }
 
     .p-card-header{
+        p{
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
         span{
             background-image: url(https://c.tenor.com/IrUuJA9J_JoAAAAC/trippy-color.gif);
             background-size: cover;
             background-clip: text;
             color: transparent;
+        }
+    }
+    .p-card-title{
+        p{
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #EE6D32;
         }
     }
 }

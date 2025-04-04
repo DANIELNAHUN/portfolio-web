@@ -1,5 +1,5 @@
 <script setup>
-
+import DarkModeBtn from "./DarkModeBtn.vue";
 </script>
 
 <template>
@@ -11,6 +11,9 @@
                 <a href="#about">About Me</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact Me</a>
+            </div>
+            <div class="tools">
+                <DarkModeBtn />
             </div>
         </div>
     </nav>

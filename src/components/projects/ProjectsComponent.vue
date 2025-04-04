@@ -82,7 +82,7 @@ onMounted(() => {
         <Carousel :value="projects" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" circular autoplayInterval="2000">
             <template #item="slotProps">
                 <div>
-                    <img :src="slotProps.data.image" :alt="slotProps.data.name" style="width: 100%;" />
+                    <img :src="slotProps.data.image" :alt="slotProps.data.name" style="width: 90%; border-radius: 15px;" />
                     <div>
                         <h3>{{ slotProps.data.title }}</h3>
                         <div v-for="(item, index) in slotProps.data.languages" :key="index" class="project-tag">
@@ -103,7 +103,8 @@ onMounted(() => {
     }
     .project-tag{
         display: inline-block;
-        margin: 0.2rem;
+        margin: 0.1rem;
     }
 }
+
 </style>

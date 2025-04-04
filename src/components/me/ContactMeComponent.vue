@@ -132,7 +132,7 @@ const submitContact = (form) => {
                     <Message v-if="$form.message?.invalid" size="small" variant="simple" severity="warn">{{
                         $form.message.error.message }}</Message>
                 </div>
-                <Button type="submit" label="Send Message" />
+                <Button class="btn-sndmail" type="submit" label="Send Message"/>
             </Form>
         </div>
     </section>
@@ -141,10 +141,10 @@ const submitContact = (form) => {
 <style scoped lang="scss">
 .contact-me{
     h1{
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: 2rem;
+        font-weight: bold;
         margin-bottom: 1rem;
-        color: white;
+        color: #EE6D32;
     }
     p{
         font-size: 1rem;
@@ -158,6 +158,19 @@ const submitContact = (form) => {
     [class$="field"]{
         margin: 15px 0;
     }
+    .btn-sndmail{
+    background-color: transparent;
+    color: #fff;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        background-color: transparent;
+        color: #fff;
+        border: #fff solid 1px;
+        box-shadow: 0 0 10px #fff;
+    }
+}
 }
 .checkbox-item{
     display: flex;
@@ -166,5 +179,8 @@ const submitContact = (form) => {
     align-items: center;
     margin: 0 10px;
     gap: 3px;
+}
+.p-checkbox:checked{
+    background-color: #EE6D32;
 }
 </style>

@@ -19,19 +19,16 @@ onMounted(() => {
 
 <template>
   <div class="app">
-    <HeaderApp/>
+    <!-- <HeaderApp/> -->
     <div class="body-container">
       <router-view/>
     </div>
   </div>
-  <FooterApp/>
+  <!-- <FooterApp/> -->
 </template>
 
 <style>
-.body-container{
+/* .body-container{
   margin-top: 4rem;
-}
- /* .app{
-  background-color: black;
- } */
+} */
 </style>
