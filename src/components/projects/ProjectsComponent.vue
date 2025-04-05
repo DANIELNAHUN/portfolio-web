@@ -86,7 +86,7 @@ onMounted(() => {
                     <div>
                         <h3>{{ slotProps.data.title }}</h3>
                         <div v-for="(item, index) in slotProps.data.languages" :key="index" class="project-tag">
-                            <Tag :value="item.language" style="background-color: black; color: white;"></Tag>
+                            <Tag :value="item.language" style="background-color: black; color: white; border: #EE6D32 solid 1px;"></Tag>
                         </div>
                     </div>
                 </div>

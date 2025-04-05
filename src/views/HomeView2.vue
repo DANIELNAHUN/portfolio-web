@@ -38,7 +38,9 @@ import ProjectsComponent from '../components/projects/ProjectsComponent.vue';
     gap: 15px;
     height: 100vh;
     padding: 1%;
-    background-image: url(../assets/background.svg);
+    /* background-image: url(../assets/background.svg); */
+    /* background-color: rgba(93, 0, 158, 1); */
+    background-color: #000;
 }
 
 .item {
@@ -48,11 +50,12 @@ import ProjectsComponent from '../components/projects/ProjectsComponent.vue';
     padding: 20px;
     font-size: 150%;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    border-radius: 50px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(128, 128, 128, 0.15);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    backdrop-filter: blur(15px); */
+    /* -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(128, 128, 128, 0.15); */
+    border: #fff 1px solid;
 
 }
 

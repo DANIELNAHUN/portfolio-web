@@ -55,12 +55,12 @@ onMounted(()=>{
             font-weight: bold;
             text-align: center;
         }
-        span{
-            background-image: url(https://c.tenor.com/IrUuJA9J_JoAAAAC/trippy-color.gif);
-            background-size: cover;
-            background-clip: text;
-            color: transparent;
-        }
+        // span{
+        //     background-image: url(https://c.tenor.com/IrUuJA9J_JoAAAAC/trippy-color.gif);
+        //     background-size: cover;
+        //     background-clip: text;
+        //     color: transparent;
+        // }
     }
     .p-card-title{
         p{

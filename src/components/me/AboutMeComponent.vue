@@ -62,7 +62,7 @@ watch([skills, me], ([newskills, newme]) => {
 <style scoped lang="scss">
 .aboutme {
     padding: 1rem;
-    color: white;
+    color: #ffff;
     align-items: center;
 
     h1 {
