@@ -76,6 +76,7 @@ const languages = computed(() => store.state.languages);
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     height: auto;
     max-height: 200px;
 
