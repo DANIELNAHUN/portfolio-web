@@ -40,3 +40,6 @@ __screenshots__/
 
 # OpenCode config (contains API keys)
 opencode.json
+
+# Playwright MCP
+.playwright-mcp/
