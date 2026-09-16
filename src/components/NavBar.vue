@@ -1,22 +1,10 @@
 <script setup lang="ts">
-import { inject, onMounted, onUnmounted, ref } from 'vue'
-import { Menu, X } from '@lucide/vue'
+import { inject, ref } from 'vue'
+import { ArrowUpRight, Menu, X } from '@lucide/vue'
 
 const openContact = inject<() => void>('openContact', () => {})
 
-const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
-
-const navLinks = [
-  { label: 'Sobre mí', href: '#sobre-mi' },
-  { label: 'Stack', href: '#stack' },
-  { label: 'Proyectos', href: '#proyectos' },
-  { label: 'Experiencia', href: '#experiencia' },
-]
-
-function handleScroll() {
-  isScrolled.value = window.scrollY > 50
-}
 
 function toggleMobileMenu() {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -30,62 +18,63 @@ function onContactClick() {
   closeMobileMenu()
   openContact()
 }
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    :class="
-      isScrolled
-        ? 'bg-background/80 backdrop-blur-md border-b border-border'
-        : 'bg-transparent border-b border-transparent'
-    "
+    class="sticky top-0 z-40 border-b border-surface-container bg-surface/90 backdrop-blur-md"
   >
-    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <!-- Logo -->
+    <nav
+      class="w-full px-4 sm:px-6 lg:px-8 xl:px-10 h-16 flex items-center justify-between gap-4"
+    >
+      <!-- Brand: logo + name + mono role -->
       <a
         href="#top"
-        class="flex items-center gap-1.5 text-base font-semibold text-foreground hover:text-foreground/90 transition-colors"
+        class="flex items-center gap-2.5 text-on-surface hover:opacity-80 transition-opacity min-w-0"
+        aria-label="Daniel Nahun — inicio"
       >
-        <span
-          class="inline-block w-1.5 h-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--color-gold)]"
-          aria-hidden="true"
+        <img
+          src="/logoweb.jpeg"
+          alt="Daniel Nahun"
+          class="w-8 h-8 rounded-md object-cover border border-border shrink-0"
+          width="32"
+          height="32"
         />
-        <span>Daniel</span>
-        <span class="text-gold">.</span>
+        <span class="text-[15px] font-semibold tracking-[-0.01em] truncate">
+          Daniel Nahun
+        </span>
+        <span
+          class="hidden lg:inline font-mono text-[11px] uppercase tracking-widest text-on-surface-variant"
+        >
+          AI &amp; Fullstack Architect
+        </span>
       </a>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8">
-        <a
-          v-for="link in navLinks"
-          :key="link.href"
-          :href="link.href"
-          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      <!-- Right: status badge + Contactar button (desktop) -->
+      <div class="hidden md:flex items-center gap-3">
+        <div
+          class="hidden xl:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-border text-[11px] text-on-surface-variant"
         >
-          {{ link.label }}
-        </a>
+          <span class="pulse-dot-success" aria-hidden="true" />
+          <span>Disponible para Proyectos &amp; Advisory</span>
+        </div>
         <button
           type="button"
-          class="px-4 py-2 text-sm font-medium rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors"
+          class="group inline-flex items-center gap-1.5 px-4 py-2 text-[14px] font-medium rounded-md bg-primary text-white hover:opacity-90 transition-all"
           @click="openContact"
         >
-          Contacto
+          Contactar
+          <ArrowUpRight
+            :size="14"
+            class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
         </button>
       </div>
 
       <!-- Mobile Menu Button -->
       <button
         type="button"
-        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-foreground hover:bg-surface transition-colors"
+        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md text-on-surface hover:bg-surface-container transition-colors"
         :aria-label="isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'"
         :aria-expanded="isMobileMenuOpen"
         @click="toggleMobileMenu"
@@ -106,24 +95,25 @@ onUnmounted(() => {
     >
       <div
         v-if="isMobileMenuOpen"
-        class="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
+        class="md:hidden bg-surface/95 backdrop-blur-md border-b border-surface-container"
       >
         <div class="px-6 py-6 flex flex-col gap-4">
-          <a
-            v-for="link in navLinks"
-            :key="link.href"
-            :href="link.href"
-            class="text-base text-muted-foreground hover:text-foreground transition-colors"
-            @click="closeMobileMenu"
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-border text-[11px] text-on-surface-variant self-start"
           >
-            {{ link.label }}
-          </a>
+            <span class="pulse-dot-success" aria-hidden="true" />
+            <span>Disponible para Proyectos &amp; Advisory</span>
+          </div>
           <button
             type="button"
-            class="mt-2 w-full px-4 py-2.5 text-sm font-medium text-center rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors"
+            class="group w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm font-medium rounded-md bg-primary text-white hover:opacity-90 transition-all"
             @click="onContactClick"
           >
-            Contacto
+            Contactar
+            <ArrowUpRight
+              :size="14"
+              class="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </button>
         </div>
       </div>

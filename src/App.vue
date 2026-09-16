@@ -15,16 +15,16 @@ function closeContact() {
 }
 
 // The openContact function is provided so any descendant (NavBar,
-// HeroSection, ContactSection) can open the modal without prop drilling.
+// HomeView) can open the modal without prop drilling.
 provide('openContact', openContact)
 </script>
 
 <template>
   <div
-    class="min-h-screen bg-background text-foreground font-[family-name:var(--font-display)]"
+    class="min-h-screen flex flex-col bg-background text-foreground font-[family-name:var(--font-display)]"
   >
     <NavBar />
-    <main>
+    <main class="flex-1 flex flex-col min-h-0">
       <RouterView />
     </main>
     <ContactModal :open="isContactOpen" @close="closeContact" />

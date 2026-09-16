@@ -1,0 +1,92 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - navigation [ref=e5]:
+        - link "Daniel Nahun — inicio" [ref=e6] [cursor=pointer]:
+          - /url: "#top"
+          - img "Daniel Nahun" [ref=e7]
+          - generic [ref=e8]: Daniel Nahun
+          - generic [ref=e9]: AI & Fullstack Architect
+        - generic [ref=e10]:
+          - generic [ref=e11]: Disponible para Proyectos & Advisory
+          - button "Contactar" [ref=e14]
+    - main [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - generic [ref=e23]: Senior Portfolio Overview
+            - generic [ref=e24]: ·
+            - generic [ref=e25]: Concurrencia limitada Q4 2025
+          - heading "Daniel Nahun — AI Engineer & Fullstack Architect" [level=1] [ref=e26]
+          - generic [ref=e27]:
+            - generic [ref=e28]: Python Developer
+            - generic [ref=e29]: Fullstack Architect
+            - generic [ref=e30]: AI Engineer
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e36]: "01"
+              - generic [ref=e37]: ·
+              - generic [ref=e38]: Trayectoria Profesional
+            - generic [ref=e39]:
+              - list [ref=e40]:
+                - listitem [ref=e41]:
+                  - generic [ref=e43]: Jun 2025 — Present
+                  - heading "Fractalia" [level=3] [ref=e44]
+                  - generic [ref=e45]: AI Engineer
+                  - paragraph [ref=e46]: "Diseño de sistemas agentic en producción: orquestación con LangGraph, LangChain y MCP. Servicios backend async sobre FastAPI en AWS."
+                - listitem [ref=e47]:
+                  - generic [ref=e49]: Feb 2022 — May 2025
+                  - heading "Cableclub" [level=3] [ref=e50]
+                  - generic [ref=e51]: Python Developer → Fullstack Architect
+                  - paragraph [ref=e52]: Del ETL inicial con Selenium a una intranet modular en FastAPI + Vue.js. RPA biométrico, integraciones Zoho y plataformas internas para técnicos en campo.
+              - generic [ref=e53]:
+                - generic [ref=e54]: 3+ Años
+                - generic [ref=e55]: ·
+                - generic [ref=e56]: Exp. Continua
+                - generic [ref=e57]: ·
+                - generic [ref=e58]: Lima, Perú
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - generic [ref=e61]: "02"
+              - generic [ref=e62]: ·
+              - generic [ref=e63]: Core Stack & Competencias
+            - generic [ref=e64]:
+              - article [ref=e65]:
+                - generic [ref=e71]:
+                  - heading "AI & Agentic Systems" [level=3] [ref=e72]
+                  - paragraph [ref=e73]: Orquestación determinista con LangGraph, LangChain y MCP. Tool-calling, memory layers y state machines para flujos multi-step.
+                  - generic [ref=e74]:
+                    - generic [ref=e75]: LangGraph
+                    - generic [ref=e76]: LangChain
+                    - generic [ref=e77]: MCP
+              - article [ref=e78]:
+                - generic [ref=e84]:
+                  - heading "Python Backend & Async" [level=3] [ref=e85]
+                  - paragraph [ref=e86]: Microservicios asíncronos en FastAPI con AsyncIO, validación Pydantic v2 y observabilidad con OpenTelemetry.
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: FastAPI
+                    - generic [ref=e89]: AsyncIO
+                    - generic [ref=e90]: Pydantic
+                    - generic [ref=e91]: PostgreSQL
+              - article [ref=e92]:
+                - generic [ref=e97]:
+                  - heading "Fullstack & Cloud" [level=3] [ref=e98]
+                  - paragraph [ref=e99]: Frontends reactivos con React y Vue 3 sobre TypeScript. Containerización Docker y cloud-native en AWS.
+                  - generic [ref=e100]:
+                    - generic [ref=e101]: React
+                    - generic [ref=e102]: Vue 3
+                    - generic [ref=e103]: AWS
+                    - generic [ref=e104]: Docker
+                    - generic [ref=e105]: TypeScript
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - heading "¿Listo para escalar arquitecturas y sistemas agentic?" [level=3] [ref=e109]
+                - paragraph [ref=e110]: Respuesta en menos de 24 horas.
+              - button "Contactar" [ref=e111]
+        - generic [ref=e116]:
+          - generic [ref=e117]: Daniel Nahun — AI Engineering
+          - paragraph [ref=e120]: © 2026 · Portfolio Overview
+  - generic [ref=e121]:
+    - generic "Toggle devtools panel" [ref=e122] [cursor=pointer]
+    - generic "Toggle Component Inspector" [ref=e128] [cursor=pointer]

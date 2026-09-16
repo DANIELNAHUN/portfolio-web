@@ -1,24 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design tokens — single source of truth.
+   Design tokens — Stitch portfolio (light theme only).
    Tailwind v4 reads these via @theme and exposes them as utilities
    (bg-background, text-foreground, border-border, etc.).
+   Dark mode adapter will be layered on top later.
 --------------------------------------------------------------------------- */
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #fafafa;
-  --color-gold: #d4a853;
-  --color-border: #1a1a1a;
-  --color-surface: #111111;
-  --color-surface-elevated: #161616;
-  --color-muted-foreground: #888888;
-  --color-primary-foreground: #0a0a0a;
+  /* Colors — Stitch palette */
+  --color-background: #fbf9f6;            /* warm cream page bg */
+  --color-foreground: #1b1c1a;            /* on-surface default text */
+  --color-surface: #ffffff;               /* cards */
+  --color-surface-container: #efeeeb;     /* secondary surfaces / hover */
+  --color-on-surface: #1b1c1a;            /* primary text */
+  --color-on-surface-variant: #44474d;    /* secondary text */
+  --color-primary: #0f1e36;               /* navy — buttons, headings */
+  --color-secondary: #c5a059;             /* gold — accents */
+  --color-gold: #c5a059;                  /* alias kept for existing classes */
+  --color-border: rgba(15, 30, 54, 0.08); /* hairline borders */
+  --color-outline: #75777e;               /* secondary outline / muted */
 
+  /* Compatibility aliases — keep legacy utilities working until
+     TerrenosView / archived files are migrated or removed. */
+  --color-surface-elevated: var(--color-surface-container);
+  --color-muted-foreground: var(--color-on-surface-variant);
+  --color-primary-foreground: #ffffff;
+
+  /* Border radius */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* Typography — Stitch scale */
   --font-display: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular,
     Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --text-display-hero: 56px;
+  --text-display-hero--line-height: 64px;
+  --text-display-hero--letter-spacing: -0.02em;
+  --text-display-hero--font-weight: 400;
+
+  --text-headline-lg: 40px;
+  --text-headline-lg--line-height: 48px;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 400;
+
+  --text-headline-md: 28px;
+  --text-headline-md--line-height: 36px;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 500;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 30px;
+
+  --text-body-md: 15px;
+  --text-body-md--line-height: 24px;
+
+  --text-label-caps: 11px;
+  --text-label-caps--line-height: 16px;
+  --text-label-caps--letter-spacing: 0.12em;
+  --text-label-caps--font-weight: 700;
+
+  --text-label-code: 12px;
+  --text-label-code--line-height: 18px;
+  --text-label-code--letter-spacing: 0.02em;
+  --text-label-code--font-weight: 500;
 }
 
 /* ---------------------------------------------------------------------------
@@ -37,14 +87,15 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   min-height: 100vh;
+  font-family: var(--font-display);
 }
 
 ::selection {
-  background-color: var(--color-gold);
-  color: var(--color-primary-foreground);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
-/* Subtle scrollbar in dark sections */
+/* Light scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -57,7 +108,7 @@ body {
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-surface-elevated);
+  background: var(--color-surface-container);
 }
 
 /* Lock body scroll when a modal is open (toggled by ContactModal) */
@@ -69,9 +120,17 @@ body.modal-open {
    Utility classes — design-specific helpers
 --------------------------------------------------------------------------- */
 
+/* Gold accent for emphasized spans (kept conservative for the light theme). */
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+/* Compatibility — legacy dark-theme utilities kept alive for TerrenosView.
+   New components should prefer the semantic color tokens above. */
+
 /* Gold gradient text. Use on emphasized words. */
 .gradient-text {
-  background: linear-gradient(180deg, #f0d896 0%, #d4a853 50%, #a07a30 100%);
+  background: linear-gradient(180deg, #f0d896 0%, #c5a059 50%, #8c6f2f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -80,46 +139,11 @@ body.modal-open {
 
 /* Gold glow box-shadow. Use on focus rings, hover states, badges. */
 .glow-gold {
-  box-shadow: 0 0 0 1px rgba(212, 168, 83, 0.25),
-    0 0 24px -4px rgba(212, 168, 83, 0.35);
+  box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.25),
+    0 0 24px -4px rgba(197, 160, 89, 0.35);
 }
 
-/* Subtle CSS-only grid pattern background. */
-.grid-bg {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* Soft gradient fade overlay (used at the top of hero / contact). */
-.gradient-fade {
-  background: linear-gradient(
-    180deg,
-    var(--color-background) 0%,
-    transparent 60%
-  );
-}
-
-/* Radial mask variant — fades the grid out toward the center. */
-.grid-bg-mask {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 40%,
-    #000 30%,
-    transparent 80%
-  );
-  mask-image: radial-gradient(
-    ellipse 70% 60% at 50% 40%,
-    #000 30%,
-    transparent 80%
-  );
-}
-
-/* Pulsing dot used in the "Disponible" badge. */
+/* Pulsing dot — gold (secondary) variant, used on editorial accents. */
 .pulse-dot {
   position: relative;
   display: inline-flex;
@@ -131,7 +155,7 @@ body.modal-open {
   position: absolute;
   inset: 0;
   border-radius: 9999px;
-  background: var(--color-gold);
+  background: var(--color-secondary);
   animation: pulse-dot 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 .pulse-dot::after {
@@ -141,7 +165,32 @@ body.modal-open {
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background: var(--color-gold);
+  background: var(--color-secondary);
+}
+
+/* Pulsing dot — emerald (success) variant, used on "Disponible" badges. */
+.pulse-dot-success {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+}
+.pulse-dot-success::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #22c55e;
+  animation: pulse-dot 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.pulse-dot-success::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #22c55e;
 }
 
 @keyframes pulse-dot {
@@ -153,4 +202,39 @@ body.modal-open {
     transform: scale(2.6);
     opacity: 0;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Timeline utility — used by the experience timeline inside HomeView.
+   Renders a vertical 1.5px line on the left, with bullets hung on it.
+--------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.4375rem; /* 7px — center the 1.5px line under the 8px bullet */
+  top: 0.375rem;
+  bottom: 0.375rem;
+  width: 1.5px;
+  background-color: var(--color-border);
+}
+.timeline > li {
+  position: relative;
+  padding-bottom: 1.25rem;
+}
+.timeline > li:last-child {
+  padding-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: -1.25rem; /* -20px — centers an 8px bullet on the 1.5px line */
+  top: 0.375rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-surface);
 }
