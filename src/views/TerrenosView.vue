@@ -13,14 +13,6 @@ interface Terreno {
 
 const terrenos: Terreno[] = [
   {
-    titulo: 'Miguel Grau - Paucarpata',
-    metros: '180 m²',
-    detalles: 'Luz + Agua, opción de inicial de S/10,000',
-    precio: 'S/28,000',
-    lat: -16.404219032472394,
-    lng: -71.4733114226225,
-  },
-  {
     titulo: 'Pajonal - Mollebaya',
     metros: '100 m²',
     detalles:
@@ -28,15 +20,6 @@ const terrenos: Terreno[] = [
     precio: 'S/47,000',
     lat: -16.50455226529705,
     lng: -71.50263092603528,
-  },
-  {
-    titulo: 'Proyecto - Mollebaya',
-    metros: '200 m²',
-    detalles:
-      'Proyecto de 3 etapas: 1ra etapa con luz y agua, 2da etapa con solo luz (agua en proceso), 3ra etapa sin servicios aún. Cada etapa tiene su precio siendo la 3ra la más económica.',
-    precio: 'S/45,000 / S/35,000 / S/25,000',
-    lat: -16.50240932524987,
-    lng: -71.43971009079037,
   },
   {
     titulo: 'Algarrobal - Ilo',
