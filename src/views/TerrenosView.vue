@@ -38,6 +38,15 @@ const terrenos: Terreno[] = [
     lat: -16.50240932524987,
     lng: -71.43971009079037,
   },
+  {
+    titulo: 'Algarrobal - Ilo',
+    metros: '300 m²',
+    detalles:
+      'Servicios básicos (luz, agua), financiamiento de hasta 4 años sin intereses con 10% inicial. En proyección: habilitación urbana y título independizado. Propietarios: Constructora Portugal.',
+    precio: 'S/130,000',
+    lat: -17.626854769865144,
+    lng: -71.28075885204062,
+  },
 ]
 
 function mapsEmbedUrl(lat: number, lng: number): string {
