@@ -30,6 +30,14 @@ const terrenos: Terreno[] = [
     lat: -17.626854769865144,
     lng: -71.28075885204062,
   },
+  {
+    titulo: 'Umapalca - Familiar',
+    metros: '180 m²',
+    detalles: '',
+    precio: 'S/60,000',
+    lat: -16.47631718237803,
+    lng: -71.51886142727649,
+  },
 ]
 
 function mapsEmbedUrl(lat: number, lng: number): string {
